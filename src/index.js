@@ -65,3 +65,88 @@ console.log(terre['satellite']);
 const prop = "temperature";
 console.log(terre[prop]);
 terre.getTemperature();
+//depuis ES6 on déclare les propriétés d'objet via des constantes
+const population = 7e7;
+const satellite = "Lune";
+const température = {
+    min: -70,
+    max: 60
+};
+
+const pop = "population";
+// l'objet en question
+const planet = {
+    [pop] : population,
+    satellite,
+    température,
+    isOld: false
+}
+
+
+console.log(planet);
+
+const prop1 = "Test";
+const prop2 = "concaténation";
+const monObjet = {
+  [`${prop1} + ${prop2}`]: "pratique !",
+};
+
+//décomposition d'objet + alias
+//const { population: populationTerre, satellite: satelliteTerre, temperature } = planet;
+//spead
+const {temperature: tempearturePlanet} = planet;
+
+console.log(planet);
+
+const terre1 = {
+    population: 7e7,
+    satellite: "Lune"
+};
+
+const terre2 = {
+    temperature: {
+        min: -70,
+        max: 60
+    }
+}
+//pour eviter de merge terre2 dans terre1 on merge dans des {}
+console.log(Object.assign({}, terre1, terre2));
+//ou mieux
+const terre3 = {...terre1, ...terre2}
+
+////////////////////////////////
+// stack                heap
+
+// const a = xxx          xxx {}
+// const b = yyy          yyy {}
+// const c = yyy
+
+// const a = {}
+// const b = {}
+// const c = b;
+// console.log(a === b);
+
+const obj1 = {
+    a: "un",
+    b: "deux",
+    c: "trois"
+  };
+  
+  for (const prop in obj1) {
+    console.log(prop);
+    console.log(obj1[prop]);
+  }
+
+  console.log(Object.keys(obj1));
+  console.log(Object.values(obj1));
+  console.log(Object.entries(obj1));
+
+  const obj2 = {
+    firstname: 'Mathieu',
+    lastname: 'Le Ray',
+    age: 37
+  }
+  //objet vers json
+  console.log(JSON.stringify(obj2));
+  //json vers objet
+  console.log(JSON.parse('{"firstname": "Mathieu", "lastname":"Le Ray"}'));
