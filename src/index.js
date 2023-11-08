@@ -113,7 +113,15 @@ const terre2 = {
 console.log(Object.assign({}, terre1, terre2));
 //ou mieux
 const terre3 = {...terre1, ...terre2}
-
+//deep copie -> parse json.stringify
+//impossible à réaliser avec des fonctions dans l'objet
+const a2 = {
+    name: 'Toto',
+    foo: {
+        bar:'zoo'
+    }
+};
+const c2 = JSON.parse(JSON.stringify(a2))
 ////////////////////////////////
 // stack                heap
 
